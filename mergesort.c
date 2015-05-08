@@ -48,11 +48,8 @@ void mergesort (double v[], int size)
 	  rl++;
 	  rite[mid] = v[size-1];
 	}
-      mergesort(left,mid);
-      if (odd == 0)
-	mergesort(rite,mid);
-      else
-	mergesort(rite,mid+1);
+      mergesort(left,ll);
+      mergesort(rite,rl);
       merge(left,ll,rite,rl,v);
     }
 }
