@@ -1,4 +1,4 @@
-/*
+/**********************************************************************
 Tópico: CADEIA DE CARACTERES
 
 -Ex1) Escreva a função contaCaracteres que:
@@ -24,12 +24,45 @@ Ex2) Escreva a função obtemMes que:
 - retorna uma nova cadeia, alocada dinamicamente do tamanho exato necessário, 
 
 contendo apenas o nome do mês recebido.
- */
+ **********************************************************************/
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
+// Ex2
+char* obtemMes(char data[])
+{
+  int i, size,ini = 0,fim = 0;
+  char* mes;
+  for (i = 0; i< strlen(data); i++)
+    {
+      if (data[i] == 'e' && ini == 0)
+	{
+	  ini = i+2;
+	  i = ini;
+	}
+      if (ini != 0 && data[i] == ' ' )
+	{
+	  fim = i-1;
+	  break;
+	}
+    }
+  
+  size = fim - ini + 1;
+  printf("Tam:=%d\n",size);
+  
+  mes = (char*) malloc (size*sizeof(char));
+  
+  for (i = 0; i<size; i++)
+    mes[i] = data[ini+ i];
+      
+  mes[fim+1] = '\n';
+  
+  return mes;
+}
+
+// Ex1
 void contaCaracteres(char cadeia[], int* nEsp, int* maiu, int* minu)
 {
   int i;
@@ -57,6 +90,8 @@ void contaCaracteres(char cadeia[], int* nEsp, int* maiu, int* minu)
 int main (void)
 {
   char str[30] = {"I*Love*Prog$"};
+  char dat[30] = {"19 de Janeiro de 2013"};
+  char* mes;
   int ne, ma, mi;
 
   printf ("Cadeia de caracteres:= %s\n", str);
@@ -76,6 +111,18 @@ int main (void)
   printf("Numero de caracteres especiais:= %d\n", ne);
   printf("Numero de caracteres maiusculos:= %d\n", ma);
   printf("Numero de caracteres minusculos:= %d\n", mi);
+
+  printf ("Data:= %s\n",dat);
+  mes = obtemMes(dat);
+  printf ("|%s|\n", mes);
+
+  strcpy(dat, "22 de Setembro de 1918");
+
+  printf ("Data:= %s\n",dat);
+  mes = obtemMes(dat);
+  printf ("|%s|\n", mes);
+
+  
   
   return 0;
 }
