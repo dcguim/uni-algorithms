@@ -71,6 +71,7 @@ int main (void)
     {
       printf("codigo produto:= %d\n",vZeros[i] );
     }
-    
+
+  free(vZeros);
   return 0;
 }
