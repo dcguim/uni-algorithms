@@ -52,7 +52,7 @@ void Cons_altera_medico (Consulta *p, char *med);
   como parâmetros. Retorna 1, se as datas são
   iguais, ou 0, em caso contrário.*/
 
-int Cons_verifica_data_consulta (Consulta *p, int d,
+ int Cons_verifica_data_consulta (Consulta *p, int d,
 				 int m, int a);
 
 
@@ -64,7 +64,7 @@ int Cons_verifica_data_consulta (Consulta *p, int d,
   nomes dos médicos são iguais, ou 0, em caso
   contrário.*/
 
-//int Cons_verifica_medico (Consulta *p, char *med);
+int Cons_verifica_medico (Consulta *p, char *med);
 
 
 
