@@ -202,6 +202,10 @@ int main (void)
   Cons_libera_consulta(p);
 
   Cons_libera_consulta(n);
+
+  Cons_libera_consulta(consultas[3]);
+  Cons_libera_consulta(consultas[4]);
+  Cons_libera_consulta(consultas[5]);
   
   return 0;
 }
