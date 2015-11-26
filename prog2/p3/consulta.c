@@ -112,7 +112,7 @@ Consulta *Cons_copia_consulta (Consulta *p)
   
   return new;
 }
-
+/*
 int troca_medico(Consulta **vet, int n, Data d,
 		 char *med, char *sub)
 {
@@ -129,6 +129,24 @@ int troca_medico(Consulta **vet, int n, Data d,
 	  strcpy(c->medico, sub);
 	  no++;
 	}	
+    }
+  return no;
+  }*/
+
+int troca_medico(Consulta **vet, int n, Data d,
+		 char *med, char *sub)
+{
+  int i, no = 0;
+  for (i=0; i< n; i++)
+    {
+      if ((Cons_verifica_data_consulta (vet[i], d.dia,
+				       d.mes, d.ano) == 1)
+	  &&
+	  (Cons_verifica_medico (vet[i], med) == 1))
+	{
+	  Cons_altera_medico (vet[i], sub);
+	  no++;
+	}
     }
   return no;
 }
@@ -202,10 +220,11 @@ int main (void)
   Cons_libera_consulta(p);
 
   Cons_libera_consulta(n);
-
+  
   Cons_libera_consulta(consultas[3]);
   Cons_libera_consulta(consultas[4]);
   Cons_libera_consulta(consultas[5]);
+  
   
   return 0;
 }
